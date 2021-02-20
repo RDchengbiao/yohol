@@ -17,6 +17,13 @@ func RegisterRoutes(r *gin.Engine)  {
 	{
 		v2.POST("/login", loginv2)
 	}
+	
+	courseGroup := router.Group("/api/course", m.AddNotice("customerNotice", "v1"))
+	{
+		courseGroup.POST("/buy", course.BuyCourse)
+		courseGroup.GET("/getinfo", course.GetCourseInfo)
+	}
+
 }
 
 func login(c *gin.Context){
